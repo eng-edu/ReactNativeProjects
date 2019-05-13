@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Header from "./src/components/Header";
+import PeopleList from "./src/components/PeopleList";
 import axios from "axios";
-
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,29 +16,21 @@ export default class App extends React.Component {
     return (
       <View>
         <Header title="Pessoas" />
-        {this.renderList()}
+        <PeopleList peoples = {this.state.peoples}/>
       </View>
     );
   }
 
   componentDidMount() {
     axios
-      .get("https://randomuser.me/api/?nat=br&results=5")
+      .get("https://randomuser.me/api/?nat=br&results=20")
       .then(res => {
         const { results } = res.data;
         this.setState({
           peoples: results
         });
       })
-      .catch(err => {});
+      .catch(err => {console.log(err)});
   }
 
-  renderList() {
-    const textElements = this.state.peoples.map((people) => {
-      const {first} = people.name
-      return <Text key = {first}> {first} </Text>;
-    });
-
-    return textElements;
-  }
 }
