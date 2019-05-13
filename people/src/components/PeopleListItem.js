@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import captitalizeFirstlatter from "../util/capitalizeFistLatter";
+import { capitalizeFistLatter } from '../util'
+
+
 
 
 const PeopleListItem = props => {
@@ -10,11 +12,11 @@ const PeopleListItem = props => {
     <View style={styles.line}>
       <Text style={styles.lineText}>
         {`${
-            captitalizeFirstlatter(title)
+            capitalizeFistLatter(title)
         } ${
-            captitalizeFirstlatter(first)
+            capitalizeFistLatter(first)
         } ${
-            captitalizeFirstlatter(last)}`}
+            capitalizeFistLatter(last)}`}
       </Text>
     </View>
   );
