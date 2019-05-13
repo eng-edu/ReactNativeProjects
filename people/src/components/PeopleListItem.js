@@ -3,11 +3,12 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { capitalizeFistLatter } from '../util'
 
 const PeopleListItem = props => {
-  const { people } = props;
+  const { people, navigationToPeopleDetail } = props;
   const { title, first, last } = people.name;
   return (
-
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=>{
+      navigationToPeopleDetail();
+    }}>
       <View style={styles.line}>
         <Image style={styles.avatar} source={{uri: people.picture.thumbnail}}/>
         <Text style={styles.lineText}>
